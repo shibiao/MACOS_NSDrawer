@@ -22,35 +22,21 @@
     
 }
 - (IBAction)up:(id)sender {
-    if (!_drawer) {
-        [self createDrawer];
-        [_drawer openOnEdge:NSRectEdgeMaxY];
-    }else{
-        [_drawer close];
-    }
-    
+    [self openOnEdge:NSRectEdgeMaxY];
 }
 - (IBAction)left:(NSButton *)sender {
-    if (!_drawer) {
-        [self createDrawer];
-        [_drawer openOnEdge:NSRectEdgeMinX];
-    }else{
-        [_drawer close];
-    }
-    
+    [self openOnEdge:NSRectEdgeMinX];
 }
 - (IBAction)down:(id)sender {
-    if (!_drawer) {
-        [self createDrawer];
-        [_drawer openOnEdge:NSRectEdgeMinY];
-    }else{
-        [_drawer close];
-    }
+    [self openOnEdge:NSRectEdgeMinY];
 }
 - (IBAction)right:(id)sender {
+    [self openOnEdge:NSRectEdgeMaxX];
+}
+-(void)openOnEdge:(NSRectEdge)edge{
     if (!_drawer) {
         [self createDrawer];
-        [_drawer openOnEdge:NSRectEdgeMaxX];
+        [_drawer openOnEdge:edge];
     }else{
         [_drawer close];
     }
